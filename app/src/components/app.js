@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-
+import {Button} from 'antd'
 import logo from '../images/logo.svg'
 
 import './app.less'
@@ -17,7 +17,8 @@ class AppComponent extends Component {
         </div>
         <p className="App-intro">
           <Link to="demo">
-            欢迎使用 react-redux请查看代码，结合自己所学知识开始你的React之旅！
+            <Button>this is a button</Button>
+            欢迎使用 react-redux请查看代码，结合自己所学知识开始你的React之旅
           </Link>
         </p>
         {this.props.children}
