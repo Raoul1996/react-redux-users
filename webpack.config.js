@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const autoprefixer = require('autoprefixer')
 
-const dflPort = 8080  //配置端口
+const dflPort = 8081  //配置端口
 
 module.exports = {
   // 配置服务器
