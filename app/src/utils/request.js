@@ -1,6 +1,6 @@
 
 
-import {codeHelper, getToken} from 'utils'
+import {codeHelper, getToken} from '../utils'
 const TIMEOUT = 15000
 
 function filterStatus (json) {
