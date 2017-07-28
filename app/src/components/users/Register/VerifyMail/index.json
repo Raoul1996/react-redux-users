@@ -1,0 +1,21 @@
+{
+  "title": "Active Account",
+  "confirm": "Confirm",
+  "verify": [
+    {
+      "sent": "Verify mail has already send to your email address",
+      "active": "please check your email and active your account"
+    }
+  ],
+  "actived": [
+    {
+      "title": "Active by Mail",
+      "successful": "Active successful",
+      "back": "Back to Index page"
+    }
+  ],
+  "active": {
+    "text": "If your has already Sign in but can't active, Or the verify link timeout,please verify your email address again",
+    "notice": "verify Email will send once only within 60s, DON'T CLICK IT MANY TIMES."
+  }
+}

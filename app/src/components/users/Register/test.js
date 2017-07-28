@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+
 class Template extends Component {
   render () {
     const {data, getDemo} = this.props

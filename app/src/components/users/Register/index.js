@@ -35,6 +35,8 @@ import {verify} from '../../../utils'
 import * as requestService from '../../../utils/request'
 import {userRegister} from '../../../actions'
 import config from './index.json'
+import stepsConfig from './steps.json'
+import messageInfo from './message.json'
 import './index.less'
 
 const FormItem = Form.Item
@@ -47,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-@connect( mapStateToProps,mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 @Form.create()
 class Register extends Component {
   constructor (props) {
@@ -87,8 +89,9 @@ class Register extends Component {
 
   checkPassword (rule, value, callback) {
     const form = this.props.form
+    const {errConfirm} = messageInfo
     if (value && value !== form.getFieldValue('password')) {
-      callback(config.message.errConfirm)
+      callback(errConfirm)
     } else {
       callback()
     }
@@ -118,7 +121,7 @@ class Register extends Component {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        const {name,email,mobile,password,school,password_confirmation,captcha} = values
+        const {name, email, mobile, password, school, password_confirmation, captcha} = values
         const body = {name, email, mobile, password, school, password_confirmation, captcha}
         console.log(this.props)
         this.props.actions.userRegister(body)
@@ -128,9 +131,10 @@ class Register extends Component {
 
   render () {
 
-    const {title, activeAccount, steps, form, message, agree, agreement, userAgreement, register} = config
+    const {title, activeAccount, form, agree, agreement, userAgreement, register} = config
+    const {steps} = stepsConfig
     const {username, email, password, confirm, mobile, school, captcha} = form
-    const {noUsername, noEmail, errEmail, limitPassword, noPassword, errConfirm, noMobile, errMobile, noSchool, noCaptcha} = message
+    const {noUsername, noEmail, errEmail, limitPassword, noPassword, errConfirm, noMobile, errMobile, noSchool, noCaptcha} = messageInfo
 
     const {getFieldDecorator} = this.props.form
 
@@ -140,7 +144,7 @@ class Register extends Component {
         <QueueAnim type="bottom">
           <div className="register-header" key="register-header">
             <h1 className="register-header-title">{title}</h1>
-            <Link to="">
+            <Link to="/register/active">
               <Icon type="info-circle-o"/>{activeAccount}
             </Link>
           </div>
@@ -151,8 +155,8 @@ class Register extends Component {
           >
             <Step title={steps[0].title}/>
             <Step title={
-              <Tooltip title={steps[1].title}>
-                <Link to="">{steps[1].link}</Link>
+              <Tooltip title={steps[1].link}>
+                <Link to="/register/active">{steps[1].title}</Link>
               </Tooltip>
             }/>
             <Step title={steps[2].title}/>

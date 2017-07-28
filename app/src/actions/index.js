@@ -24,4 +24,4 @@
 //                          
 // 
 export { getDemo } from './demo.action'
-export {userRegister} from './user.action'
+export {userRegister,activeUser,sendActiveMail} from './user.action'

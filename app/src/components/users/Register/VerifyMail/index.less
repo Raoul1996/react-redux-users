@@ -1,0 +1,25 @@
+@marginBottom: 16px;
+.verify-mail {
+  background-color: #ffffff;
+  padding: 10px;
+  text-align: left;
+  &-header {
+    &-title {
+      line-height: 40px;
+      margin-bottom: @marginBottom;
+      font-weight: 300;
+    }
+    &-steps {
+      margin-bottom: 2 * @marginBottom;
+    }
+  }
+  &-input {
+    width: 240px;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+    &-add {
+      width: 40px;
+    }
+  }
+}

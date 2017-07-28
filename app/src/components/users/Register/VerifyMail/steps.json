@@ -1,0 +1,14 @@
+{
+  "steps": [
+    {
+      "title": "Register"
+    },
+    {
+      "title": "Active",
+      "link": "Click here to active your account"
+    },
+    {
+      "title": "Done"
+    }
+  ]
+}

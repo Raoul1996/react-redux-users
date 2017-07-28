@@ -31,13 +31,13 @@ const apiMaker = path => `${__APIHOST__}/${path}`
 export default {
   host: apiMaker(''),
   // user
-  tokenVerify: apiMaker('token-verify'),
+  tokenVerify: apiMaker('token-VerifyMail'),
   register: apiMaker('user/register'),
   userActive: apiMaker('user/active'),
   userMail: apiMaker('user/active-mail/send'),
   forgotPassword: apiMaker('user/forgot-password'),
   resetPassword: apiMaker('user/reset-password'),
-  findPassword: apiMaker('user/reset-password/verify'),
+  findPassword: apiMaker('user/reset-password/VerifyMail'),
   login: apiMaker('user/login'),
   logout: apiMaker('user/logout'),
   userMe: apiMaker('user/me'),

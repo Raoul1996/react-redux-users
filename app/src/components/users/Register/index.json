@@ -1,18 +1,6 @@
 {
-  "title": "注册账号",
-  "activeAccount": "已有账号，点此激活",
-  "steps": [
-    {
-      "title": "注册"
-    },
-    {
-      "title": "已有账号，点击激活",
-      "link":"激活"
-    },
-    {
-      "title": "Done"
-    }
-  ],
+  "title": "Register Account",
+  "activeAccount": "Already have a account?",
   "form":{
     "username": "username",
     "email":"email",
@@ -22,18 +10,7 @@
     "school": "school",
     "captcha":"captcha"
   },
-  "message":{
-    "noUsername":"please input your username",
-    "noEmail": "please input your email address",
-    "errEmail": "please input your current email address",
-    "limitPassword": "the length of password should between 6 to 18",
-    "noPassword": "please input your password",
-    "errConfirm": "not match the password",
-    "noMobile": "please input your mobile number",
-    "errMobile": "please input your current mobile",
-    "noSchool": "please input your school",
-    "noCaptcha": "please input the captcha"
-  },
+
   "agree":"I agree",
   "agreement": "Just do it!",
   "userAgreement":" the agreement",

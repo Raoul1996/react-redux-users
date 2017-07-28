@@ -1,0 +1,16 @@
+{
+  "messageInfo": {
+    "noUsername": "please input your username",
+    "noEmail": "please input your email address",
+    "errEmail": "please input your current email address",
+    "limitPassword": "the length of password should between 6 to 18",
+    "noPassword": "please input your password",
+    "errConfirm": "not match the password",
+    "noMobile": "please input your mobile number",
+    "errMobile": "please input your current mobile",
+    "noSchool": "please input your school",
+    "noCaptcha": "please input the captcha",
+    "submitSuccessful": "Submit Successful",
+    "errCaptcha": "please input the current captcha"
+  }
+}

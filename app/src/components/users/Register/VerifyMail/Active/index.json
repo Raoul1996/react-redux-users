@@ -1,0 +1,6 @@
+{
+  "config":{
+    "text":"If your has already Sign in but can't active, Or the verify link timeout,please verify your email address again",
+    "notice":"verify Email will send once only within 60s, DON'T CLICK IT MANY TIMES."
+  }
+}
