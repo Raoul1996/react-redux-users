@@ -7,7 +7,7 @@ import {activeUser, sendActiveMail} from '../../../../actions'
 import {goto, verify} from '../../../../utils'
 import config from './index.json'
 import {steps} from './steps.json'
-import messageInfo from '../message.json'
+import {messageInfo} from '../message.json'
 import './index.less'
 import Verify from './Verify'
 import Active from './Active'
@@ -46,9 +46,8 @@ class VerifyMail extends Component {
     })
   }
 
-  onVerifySubmit (e) {
+  onVerifySubmit () {
     const {input} = this.state
-    // TODO: What's the meaning of 6? the length of captcha
     if (input.length === 6) {
       message.success(submitSuccessful)
       const params = {
@@ -63,7 +62,7 @@ class VerifyMail extends Component {
 
   onActiveSubmit () {
     const {input} = this.state
-    if (input.match(verify.email)) {
+    if (!!input.match(verify.mail)) {
       message.success(submitSuccessful)
       const params = {
         email: input
@@ -75,7 +74,7 @@ class VerifyMail extends Component {
   }
 
   render () {
-    const {title, confirm, active} = config
+    const {title, confirm} = config
     const {userInfo, route: {path}} = this.props
     const addonVerify = (<div onClick={this.onVerifySubmit} className="veriyf-mail-input-add">{confirm}</div>)
     const addonActive = (<div onClick={this.onActiveSubmit} className="veriyf-mail-input-add">{confirm}</div>)
@@ -106,7 +105,7 @@ class VerifyMail extends Component {
               :
               <Active
                 addonAfter={addonActive}
-                onInputChage={this.onInputChange}
+                onInputChange={this.onInputChange}
               />
           }
         </QueueAnim>

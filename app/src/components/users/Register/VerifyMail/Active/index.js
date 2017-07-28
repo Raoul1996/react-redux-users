@@ -6,7 +6,6 @@ import {messageInfo} from '../../message.json'
 const Active = (props) => {
   const {text, notice} = config
   const {noEmail} = messageInfo
-  console.log(config)
   return (
     <div>
       <p className="h-title" key="verify-mail-p-1">{text}</p>
