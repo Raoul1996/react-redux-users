@@ -27,38 +27,62 @@
 import React, {Component} from 'react'
 import {Button, Form, Input, Steps, Card, Icon, Tooltip, Row, Col, Checkbox} from 'antd'
 import {Link} from 'react-router'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import QueueAnim from 'rc-tween-one'
-import Api from '../../../api'
+import API from '../../../api'
 import {verify} from '../../../utils'
-import * as Request from '../../../utils/request'
+import * as requestService from '../../../utils/request'
+import {userRegister} from '../../../actions'
 import config from './index.json'
 import './index.less'
 
 const FormItem = Form.Item
 const Step = Steps.Step
-const mapStateToprops = () => ({})
+const mapStateToProps = () => ({})
 const mapDispatchToProps = (dispatch) => {
   const actions = {userRegister}
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
 }
-@connect()
+
+@connect( mapStateToProps,mapDispatchToProps)
 @Form.create()
 class Register extends Component {
   constructor (props) {
     super(props)
     this.state = {
       checkAgreement: false,
-      passwordDirty: false
+      passwordDirty: false,
+      captcha: '',
+      captchaStamp: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handlePasswordBlur = this.handlePasswordBlur.bind(this)
     this.checkPassword = this.checkPassword.bind(this)
     this.refreshCaptcha = this.refreshCaptcha.bind(this)
     this.checkAgreement = this.checkAgreement.bind(this)
+    this.getCaptcha = this.getCaptcha.bind(this)
   }
 
   componentDidMount () {
+    try {
+      this.getCaptcha()
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
+  async getCaptcha () {
+    try {
+      const data = await requestService.get(API.register)
+      await this.setState({
+        captcha: data.url
+      })
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   checkPassword (rule, value, callback) {
@@ -71,7 +95,9 @@ class Register extends Component {
   }
 
   refreshCaptcha () {
-    console.log('click me!')
+    this.setState({
+      captchaStamp: +new Date()
+    })
   }
 
   // TODO: I don't know the dirty's mean.
@@ -92,9 +118,10 @@ class Register extends Component {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        // const {name,email,mobile,password,school,password_confirmation,captcha} = values
-        const body = values
-        this.props.action.userRegsiter(body)
+        const {name,email,mobile,password,school,password_confirmation,captcha} = values
+        const body = {name, email, mobile, password, school, password_confirmation, captcha}
+        console.log(this.props)
+        this.props.actions.userRegister(body)
       }
     })
   }
@@ -207,7 +234,8 @@ class Register extends Component {
                 </Col>
                 <Col>
                   <img
-                    src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP19yH5U8FEdtwFM3Upj1DMPeeRgxBn15RzOW_NAlz2vMPMjIHjg'}
+                    // src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP19yH5U8FEdtwFM3Upj1DMPeeRgxBn15RzOW_NAlz2vMPMjIHjg'}
+                    src={`${this.state.captcha}?${this.state.captchaStamp}`}
                     alt="register-captcha"
                     className="register-form-captcha"
                     onClick={this.refreshCaptcha}

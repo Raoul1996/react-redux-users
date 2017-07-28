@@ -23,5 +23,9 @@
 //                          佛祖保佑         永无bug
 //                          
 // 
-export const GET_DEMO_SUCC = 'GET_DEMO_SUCC'
-export const GET_DEMO_ERR = 'GET_DEMO_ERR'
+export const SET_USERINFO = "SET_USERINFO"
+
+export const actionCreater = (type, payload = {}) => ({
+  type: type,
+  payload: payload
+})

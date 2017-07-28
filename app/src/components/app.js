@@ -28,8 +28,6 @@
  */
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import {Button} from 'antd'
-import logo from '../images/logo.svg'
 
 import './app.less'
 class AppComponent extends Component {

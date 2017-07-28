@@ -23,7 +23,7 @@
 //                          佛祖保佑         永无bug
 //                          
 // 
-
+import {actionCreater,SET_USERINFO} from './type'
 import {message} from 'antd'
 import * as requestService from '../utils/request'
 
@@ -41,6 +41,11 @@ export function userRegister (body) {
       const {email, mobile, name, school} = body
       let userInfo = {email, mobile, name, school}
       const data = await requestService.post(API.register, body)
+      dispatch(actionCreater(SET_USERINFO,{
+        ...userInfo,
+        user_id: data.user_id
+      }))
+      goto('/register/verify')
     } catch (err) {
       console.log(err)
     }

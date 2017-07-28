@@ -24,3 +24,4 @@
 //                          
 // 
 export { getDemo } from './demo.action'
+export {userRegister} from './user.action'
