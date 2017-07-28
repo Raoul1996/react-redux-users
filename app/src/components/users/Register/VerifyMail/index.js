@@ -25,12 +25,19 @@ class VerifyMail extends Component {
     this.state = {
       input: ''
     }
+    this.onInputChange = this.onInputChange.bind(this)
     this.onActiveSubmit = this.onActiveSubmit.bind(this)
     this.onVerifySubmit = this.onVerifySubmit.bind(this)
   }
 
   componentDidMount () {
-
+    console.log(this.props.params)
+    if (this.props.params.vcode) {
+      const params = {
+        verify_code: this.props.params.vcode
+      }
+      this.props.activeUser(params)
+    }
   }
 
   onInputChange (e) {
@@ -94,7 +101,6 @@ class VerifyMail extends Component {
               ? <Verify
                 email={userInfo.email}
                 addonAfter={addonVerify}
-                active={active}
                 onInputChange={this.onInputChange}
               />
               :

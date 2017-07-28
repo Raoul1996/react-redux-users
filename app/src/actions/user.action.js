@@ -23,10 +23,10 @@
 //                          佛祖保佑         永无bug
 //                          
 // 
-import {actionCreater, SET_USERINFO,SET_USERME,SET_USER_ROLE} from './type'
+import {actionCreater, SET_USERINFO, SET_USERME, SET_USER_ROLE} from './type'
 import {message} from 'antd'
 import * as requestService from '../utils/request'
-
+import store from 'store.js'
 import API from '../api'
 import {getLocalStorage, goto} from '../utils'
 
@@ -81,6 +81,18 @@ export function activeUser (param) {
       try {
         const data = await requestService.get(API.userActive, param)
         // set sth. to localStorage
+        window.localStorage.setItem('neuq_oj.token', data.token)
+        window.localStorage.setItem('neuq_oj.name', data.user.name)
+        window.localStorage.setItem('neuq_oj.id', data.user.id)
+        window.localStorage.setItem('neuq_oj.role', data.role)
+        // I wanna use store.js
+        console.log(data)
+        // TODO: 不清楚是不是可以工作，因为我没闲着的邮箱了。
+        console.log('must test the store.js')
+        store.set('rt_rx.token', data.token)
+        store.set('rt_rx.name', data.name)
+        store.set('rt_rx.id', data.id)
+        store.set('rt_rx.role', data.role)
         await dispatch(actionCreater(SET_USERME, data.user))
         await dispatch(actionCreater(SET_USER_ROLE, data.role))
         await goto('/register/actived')
