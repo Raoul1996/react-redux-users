@@ -6,11 +6,45 @@ import API from '../api'
 import {getLocalStorage, goto} from '../utils'
 
 /**
+ * 登录验证
+ */
+
+
+/**
+ * 用户登录
+ * @param body
+ * @returns {function(*)}
+ */
+export function login(body) {
+  return async dispatch => {
+    try {
+      const data = await requestService.post(API.login, body)
+      window.localStorage.setItem('neuq_oj.token', data.token)
+      window.localStorage.setItem('neuq_oj.name', data.user.name)
+      window.localStorage.setItem('neuq_oj.id', data.user.id)
+      window.localStorage.setItem('neuq_oj.role', data.role)
+      // I wanna use store.js
+      // TODO: 不清楚是不是可以工作
+      // store.set('rt_rx.token', data.token)
+      // store.set('rt_rx.name', data.name)
+      // store.set('rt_rx.id', data.id)
+      // store.set('rt_rx.role', data.role)
+      await dispatch(actionCreater(SET_USERME, data.user))
+      await dispatch(actionCreater(SET_USER_ROLE, data.role))
+      message.success('login successful')
+      goto('/register')
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
+/**
  *用户注册
  * @param body request body
  * @returns {function(*)}
  */
-export function userRegister (body) {
+export function userRegister(body) {
   return async dispatch => {
     try {
       const {email, mobile, name, school} = body
@@ -33,7 +67,7 @@ export function userRegister (body) {
  * @returns {function()}
  * @constructor
  */
-export function sendActiveMail (params) {
+export function sendActiveMail(params) {
   return async () => {
     try {
       await requestService.get(API.userMail, params)
@@ -50,7 +84,7 @@ export function sendActiveMail (params) {
  * @returns {function(*)}
  * @constructor
  */
-export function activeUser (param) {
+export function activeUser(param) {
   return dispatch => {
     setTimeout(async () => {
       try {

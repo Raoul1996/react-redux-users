@@ -3,7 +3,7 @@
     "noUsername": "please input your username",
     "noEmail": "please input your email",
     "errEmail": "please input your current email",
-    "limitPassword": "the length of password should between 6 to 18",
+    "limitPassword": "the password should between 6 to 18",
     "noPassword": "please input your password",
     "errConfirm": "not match the password",
     "noMobile": "please input your mobile number",
@@ -11,6 +11,7 @@
     "noSchool": "please input your school",
     "noCaptcha": "please input the captcha",
     "submitSuccessful": "Submit Successful",
-    "errCaptcha": "please input the current captcha"
+    "errCaptcha": "please input the current captcha",
+    "noLoginIdentifier": "please input your username"
   }
 }

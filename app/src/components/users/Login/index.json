@@ -1,0 +1,10 @@
+{
+  "config": {
+    "title": "this is the login pages",
+    "tooltip": "Username: Old OJ account's ID, isn't another ID && nickName",
+    "links": {
+      "register": "Register",
+      "forget": "Forget Password"
+    }
+  }
+}
