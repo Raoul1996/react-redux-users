@@ -1,1 +1,1 @@
-export {login,userRegister,activeUser,sendActiveMail} from './user.action'
+export {login,userRegister,activeUser,sendActiveMail,findPassword, forgetPassword} from './user.action'

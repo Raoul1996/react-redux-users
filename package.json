@@ -5,7 +5,9 @@
   "main": "app/src/main.js",
   "scripts": {
     "build": "webpack  --progress --config webpack.production.config.js",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "push":"git add . && git commit",
+    "pull": "git pull --rebase"
   },
   "dependencies": {
     "antd": "^2.12.2",

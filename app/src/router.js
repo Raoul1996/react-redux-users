@@ -6,14 +6,13 @@ import AppComponent from './components/app'
 import Register from './components/users/Register'
 import VerifyMail from './components/users/Register/VerifyMail'
 import Actived from './components/users/Register/VerifyMail/Actived'
-// this is the register about components end
-// this is the login about components start
 import Login from './components/users/Login'
+import Password from './components/users/Password'
 
 const RouterApp = () => (
   <Router history={hashHistory}>
-    {/* because I only have the register component this moment, so I Redirect the root path to the register route */}
-    <Redirect path="/" to="login"/>
+    {/* because I only have the register component this moment, so I Redirect the root path to the register route */ }
+    <Redirect path="/" to="password"/>
     <Route path="/" component={AppComponent}>
       <Route path="register">
         <IndexRoute component={Register}/>
@@ -25,6 +24,10 @@ const RouterApp = () => (
       </Route>
       <Route path="login">
         <IndexRoute component={Login}/>
+      </Route>
+      <Route path="password">
+        <IndexRoute component={Password}/>
+        <Route path=':type' component={Password} />
       </Route>
     </Route>
 

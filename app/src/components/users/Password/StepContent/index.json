@@ -1,0 +1,10 @@
+{
+  "config": {
+    "sendSuccessful": "send mail successfully!",
+    "active": "Please check your email to active your account",
+    "success": "update password successful!" ,
+    "back":"Back Index Page",
+    "willSend": "we have to send an email to verify, Please check your email later",
+    "limit": "Verify mail will send once in 60s, Please don't repeat click the button, if timeout,please click the button again "
+  }
+}

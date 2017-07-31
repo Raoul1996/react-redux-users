@@ -1,0 +1,7 @@
+{
+  "steps": {
+    "verify":"Verify",
+    "change":"change Password",
+    "done":"Done"
+  }
+}

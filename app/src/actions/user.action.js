@@ -3,7 +3,7 @@ import {message} from 'antd'
 import * as requestService from '../utils/request'
 import store from 'store2'
 import API from '../api'
-import {getLocalStorage, goto} from '../utils'
+import { goto} from '../utils'
 
 /**
  * 登录验证
@@ -20,7 +20,6 @@ export function login(body) {
     try {
       const data = await requestService.post(API.login, body)
       // I wanna use store.js
-      // TODO: 不清楚是不是可以工作
       store.set('rt_rx.token', data.token)
       store.set('rt_rx.name', data.user.name)
       store.set('rt_rx.id', data.user.id)
@@ -103,5 +102,19 @@ export function activeUser(param) {
       }
     }, 2000)
   }
-
+}
+/**
+ * 忘记密码验证邮箱
+ * @param param mail Address
+ * @returns {function(*)}
+ */
+export function forgetPassword(param) {
+  return async () => {
+    try {
+      message.success('send mail successful')
+    } catch (err) {
+      message.error('send mail failed')
+      console.error(err)
+    }
+  }
 }
