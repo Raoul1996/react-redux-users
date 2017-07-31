@@ -6,7 +6,7 @@ import QueueAnmi from 'rc-queue-anim'
 
 import {config} from './index.json'
 import {steps} from './steps.json'
-import {findPassword,forgetPassword} from '../../../actions'
+import {findPassword, forgetPassword} from '../../../actions'
 import './index.less'
 import StepContent from './StepContent'
 import Update from './Update'
@@ -15,22 +15,28 @@ const Step = Steps.Step
 
 @connect(
   state => ({}),
-  dispatch => bindActionCreators({findPassword,forgetPassword}, dispatch)
+  dispatch => bindActionCreators({findPassword, forgetPassword}, dispatch)
 )
 class Password extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      input: ''
+    }
     this.sendVerifyMail = this.sendVerifyMail.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
   }
 
-  sendVerifyMail() {
-    console.log('click the send mail function')
+  sendVerifyMail(e) {
+    e.preventDefault()
+    this.props.forgetPassword({email: this.state.input})
   }
 
-  onInputChange() {
-    console.log('input has changed')
+  onInputChange(e) {
+    e.preventDefault()
+    this.setState = {
+      input: e.target.value
+    }
   }
 
   render() {

@@ -1,16 +1,16 @@
 
 
-import {codeHelper, getToken} from '../utils'
+import {codeHelper} from '../utils'
 const TIMEOUT = 15000
-
+import store from 'store2'
 function filterStatus (json) {
   if (json.code === 0) {
     return json.data
   } else if (json.code === 1004) {
-    window.localStorage.removeItem('neuq_oj.token')
-    window.localStorage.removeItem('neuq_oj.name')
-    window.localStorage.removeItem('neuq_oj.id')
-    window.localStorage.removeItem('neuq_oj.role')
+    store.remove('rt_rx.token')
+    store.remove('rt_rx.name')
+    store.remove('rt_rx.id')
+    store.remove('rt_rx.role')
     throw new Error('Did not Login')
   } else {
     throw new Error('ResponseUnexpected', codeHelper(json.code))
@@ -72,7 +72,7 @@ export function tget (uri, params, headers) {
   }
   headers = {
     ...headers,
-    token: getToken()
+    token: store.get('rt_rx.token')
   }
   return request(uri, 'GET', headers)
 }
@@ -97,7 +97,7 @@ export function tpost (uri, body, headers = {}) {
   }
   headers = {
     ...headers,
-    token: getToken()
+    token: store.get('rt_rx.token')
   }
   return request(uri, 'POST', headers, body)
 }

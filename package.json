@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack  --progress --config webpack.production.config.js",
     "start": "webpack-dev-server",
-    "push":"git add . && git commit",
+    "commit":"git add . && git commit",
     "pull": "git pull --rebase"
   },
   "dependencies": {

@@ -1,14 +1,31 @@
-import {actionCreater, SET_USERINFO, SET_USERME, SET_USER_ROLE} from './type'
+import {actionCreater, SET_USERINFO, SET_USERME, SET_USER_ROLE, CLEAN_USERME,IS_LOGINED} from './type'
 import {message} from 'antd'
 import * as requestService from '../utils/request'
 import store from 'store2'
 import API from '../api'
-import { goto} from '../utils'
+import {goto} from '../utils'
+const ERR_OK = 0
 
 /**
  * 登录验证
+ * @header token
  */
+export function tokenVerify() {
+  return async (dispatch) =>{
+    try{
+      await requestService.tget(API.tokenVerify)
+      await dispatch(actionCreater(IS_LOGINED))
+    } catch (err) {
+      dispatch(actionCreater(CLEAN_USERME))
+      store.remove('rt_rx.token')
+      store.remove('rt_rx.name')
+      store.remove('rt_rx.id')
+      store.remove('rt_rx.role')
+      throw new Error("need login")
+    }
+  }
 
+}
 
 /**
  * 用户登录
@@ -28,6 +45,26 @@ export function login(body) {
       await dispatch(actionCreater(SET_USER_ROLE, data.role))
       message.success('login successful')
       goto('/register')
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
+/**
+ * 用户登出
+ * @returns {function(*)}
+ */
+export function logout() {
+  return async (dispatch) => {
+    try {
+      const data = await requestService.tget(API.logout)
+      await dispatch(actionCreater(CLEAN_USERME))
+      // TODO: store these as a obj?
+      store.remove('rt_rx.token')
+      store.remove('rt_rx.name')
+      store.remove('rt_rx.id')
+      store.remove('rt_rx.role')
     } catch (err) {
       console.error(err)
     }
@@ -65,8 +102,11 @@ export function userRegister(body) {
 export function sendActiveMail(params) {
   return async () => {
     try {
-      await requestService.get(API.userMail, params)
-      goto('/register/verify')
+      const data = await requestService.get(API.userMail, params)
+      if (data.code === ERR_OK) {
+        message.success('sen mail successfully')
+        goto('/register/verify')
+      }
     } catch (err) {
       console.error(err)
     }
@@ -103,6 +143,7 @@ export function activeUser(param) {
     }, 2000)
   }
 }
+
 /**
  * 忘记密码验证邮箱
  * @param param mail Address
@@ -111,10 +152,36 @@ export function activeUser(param) {
 export function forgetPassword(param) {
   return async () => {
     try {
-      message.success('send mail successful')
+      const data = await requestService.get(API.forgotPassword, param)
+      if (data.code === ERR_OK) {
+        message.success('send mail successful')
+        goto('/password/succ')
+      }
     } catch (err) {
       message.error('send mail failed')
       console.error(err)
     }
   }
+}
+
+/**
+ * 找回密码
+ * @param params verify code
+ * @return {number}
+ */
+export function findPassword(params) {
+  return setTimeout(async () => {
+    try {
+      const data = await requestService.post(API.findPassword, params)
+      if (data.code === ERR_OK) {
+        message.success('Update password successful')
+      } else {
+        console.log(data)
+      }
+      goto('/password/done')
+    } catch (err) {
+      console.error(err)
+      goto('/password')
+    }
+  }, 2000)
 }
