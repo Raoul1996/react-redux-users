@@ -1,5 +1,8 @@
 {
   "config": {
-    "title": "this is the title"
+    "title": "this is the title",
+    "password": "password",
+    "confirm": "confirm Password",
+    "edit":"Edit"
   }
 }
