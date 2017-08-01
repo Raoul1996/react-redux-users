@@ -1,7 +1,7 @@
 import React from 'react'
 import {Input} from 'antd'
 import {config} from './index.json'
-import {messageInfo} from '../../message.json'
+import {messageInfo} from '../../../../../config/message.json'
 
 const Active = (props) => {
   const {text, notice} = config

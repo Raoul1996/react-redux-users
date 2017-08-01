@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {login} from '../../../actions'
 import {config} from './index.json'
-import {messageInfo} from '../Register/message.json'
+import {messageInfo} from '../../../config/message.json'
 import './index.less'
 import {goto, verify} from '../../../utils'
 

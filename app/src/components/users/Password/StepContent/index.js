@@ -2,7 +2,7 @@ import React from 'react'
 import {config} from './index.json'
 import {Link} from 'react-router'
 import {Input} from 'antd'
-import {messageInfo} from '../message.json'
+import {messageInfo} from '../../../../config/message.json'
 
 const StepContent = (props) => {
   const {sendSuccessful, active, success, back, willSend, limit} = config

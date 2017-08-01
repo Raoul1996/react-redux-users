@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {Button, Form, Input} from 'antd'
 import {verify} from '../../../../utils'
 import {config} from './index.json'
-import {messageInfo} from '../message.json'
+import {form} from '../../../../config/label.json'
+import {messageInfo} from '../../../../config/message.json'
 
 const FormItem = Form.Item
 
@@ -56,7 +57,8 @@ class Update extends Component {
 
   render() {
     const {loading} = this.state
-    const {title, password, confirm, edit} = config
+    const {title, edit} = config
+    const {password, confirm} = form
     const {limitPassword, noPassword, errConfirm} = messageInfo
     const {getFieldDecorator} = this.props.form
     const formItemLayout = {}

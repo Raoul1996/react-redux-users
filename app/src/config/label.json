@@ -1,0 +1,11 @@
+{
+  "form":{
+    "username": "username",
+    "email":"email",
+    "password":"password",
+    "confirm":"confirmPassword",
+    "mobile":"mobile",
+    "school": "school",
+    "captcha":"captcha"
+  }
+}

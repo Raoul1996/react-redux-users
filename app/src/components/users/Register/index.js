@@ -10,7 +10,8 @@ import * as requestService from '../../../utils/request'
 import {userRegister} from '../../../actions'
 import config from './index.json'
 import stepsConfig from './steps.json'
-import messageInfo from './message.json'
+import messageInfo from '../../../config/message.json'
+import {form} from '../../../config/label.json'
 import './index.less'
 
 const FormItem = Form.Item
@@ -105,7 +106,7 @@ class Register extends Component {
 
   render () {
 
-    const {title, activeAccount, form, agree, agreement, userAgreement, register} = config
+    const {title, activeAccount, agree, agreement, userAgreement, register} = config
     const {steps} = stepsConfig
     const {username, email, password, confirm, mobile, school, captcha} = form
     const {noUsername, noEmail, errEmail, limitPassword, noPassword, errConfirm, noMobile, errMobile, noSchool, noCaptcha} = messageInfo
