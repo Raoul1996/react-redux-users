@@ -106,7 +106,7 @@ class Login extends Component {
           <div className="login-links"><Link to={'/register'}>
             {register}
           </Link>
-            <Link to={'/forget'}>
+            <Link to={'/password'}>
               {forget}
             </Link></div>
         </QueueAnim>

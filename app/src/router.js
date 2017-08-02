@@ -8,11 +8,11 @@ import VerifyMail from './components/users/Register/VerifyMail'
 import Actived from './components/users/Register/VerifyMail/Actived'
 import Login from './components/users/Login'
 import Password from './components/users/Password'
-
+import EditUserInfo from './containers/editUserInfo.container'
 const RouterApp = () => (
   <Router history={hashHistory}>
     {/* because I only have the register component this moment, so I Redirect the root path to the register route */ }
-    <Redirect path="/" to="password"/>
+    <Redirect path="/" to="login"/>
     <Route path="/" component={AppComponent}>
       <Route path="register">
         <IndexRoute component={Register}/>
@@ -28,6 +28,9 @@ const RouterApp = () => (
       <Route path="password">
         <IndexRoute component={Password}/>
         <Route path=':type' component={Password} />
+      </Route>
+      <Route path="info">
+        <IndexRoute component={EditUserInfo}/>
       </Route>
     </Route>
 

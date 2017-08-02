@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 //连接redux
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getDemo } from '../actions'
+import { updateUserInfo } from '../actions'
 
-import ReduxDemo from '../components/demo'
+import EditUserInfo from '../components/users/editInfo'
 
 class DemoContainer extends Component {
   render () {

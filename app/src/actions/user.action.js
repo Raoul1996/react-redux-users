@@ -1,9 +1,10 @@
-import {actionCreater, SET_USERINFO, SET_USERME, SET_USER_ROLE, CLEAN_USERME,IS_LOGINED} from './type'
+import {actionCreater, SET_USERINFO, SET_USERME, SET_USER_ROLE, CLEAN_USERME, IS_LOGINED} from './type'
 import {message} from 'antd'
 import * as requestService from '../utils/request'
 import store from 'store2'
 import API from '../api'
 import {goto} from '../utils'
+
 const ERR_OK = 0
 
 /**
@@ -11,8 +12,8 @@ const ERR_OK = 0
  * @header token
  */
 export function tokenVerify() {
-  return async (dispatch) =>{
-    try{
+  return async (dispatch) => {
+    try {
       await requestService.tget(API.tokenVerify)
       await dispatch(actionCreater(IS_LOGINED))
     } catch (err) {
@@ -21,7 +22,7 @@ export function tokenVerify() {
       store.remove('rt_rx.name')
       store.remove('rt_rx.id')
       store.remove('rt_rx.role')
-      throw new Error("need login")
+      throw new Error('need login')
     }
   }
 
@@ -153,8 +154,8 @@ export function forgetPassword(param) {
   return async () => {
     try {
       const data = await requestService.get(API.forgotPassword, param)
-        message.success('send mail successful')
-        goto('/password/succ')
+      message.success('send mail successful')
+      goto('/password/succ')
     } catch (err) {
       message.error('send mail failed')
       console.error(err)
@@ -171,11 +172,31 @@ export function findPassword(params) {
   return setTimeout(async () => {
     try {
       const data = await requestService.post(API.findPassword, params)
-        message.success('Update password successful')
+      message.success('Update password successful')
       goto('/password/done')
     } catch (err) {
       console.error(err)
       goto('/password')
     }
   }, 2000)
+}
+
+/**
+ * 更新用户信息
+ * @param params userInfo
+ * @returns {function(*)}
+ */
+export function updateUserInfo(params) {
+  return async () => {
+    try {
+      await requestService.tpost(API.updateUserInfo,params)
+      message.success('update user info successful')
+      const userId = store.get('rt_rx.id')
+      console.log(userId)
+      goto('/')
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
 }
