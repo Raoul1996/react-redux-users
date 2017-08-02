@@ -1,3 +1,7 @@
+/**
+ * Created by out_xu on 16/12/20.
+ */
+
 // const __APIHOST__ = 'http://192.168.1.189:3000'
 const __APIHOST__ = 'http://oj.marklux.cn'
 
@@ -6,13 +10,13 @@ const apiMaker = path => `${__APIHOST__}/${path}`
 export default {
   host: apiMaker(''),
   // user
-  tokenVerify: apiMaker('token-VerifyMail'),
+  tokenVerify: apiMaker('token-verify'),
   register: apiMaker('user/register'),
   userActive: apiMaker('user/active'),
   userMail: apiMaker('user/active-mail/send'),
   forgotPassword: apiMaker('user/forgot-password'),
   resetPassword: apiMaker('user/reset-password'),
-  findPassword: apiMaker('user/reset-password/VerifyMail'),
+  findPassword: apiMaker('user/reset-password/verify'),
   login: apiMaker('user/login'),
   logout: apiMaker('user/logout'),
   userMe: apiMaker('user/me'),

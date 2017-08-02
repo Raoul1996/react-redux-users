@@ -29,7 +29,7 @@ class Update extends Component {
   checkPassword(rule, value, callback) {
     const form = this.props.form
     const {errConfirm} = messageInfo
-    if (value && value !== form.getFieldValue('password')) {
+    if (value && value !== form.getFieldValue('new_password')) {
       callback(errConfirm)
     } else {
       callback()

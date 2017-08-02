@@ -29,16 +29,16 @@ class Password extends Component {
 
   sendVerifyMail(e) {
     e.preventDefault()
+    console.log(this.state.input)
     this.props.forgetPassword({email: this.state.input})
   }
 
   onInputChange(e) {
     e.preventDefault()
-    this.setState = {
+    this.setState({
       input: e.target.value
-    }
+    })
   }
-
   render() {
     const {params: {type}} = this.props
     const {title, send} = config

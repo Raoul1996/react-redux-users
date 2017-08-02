@@ -153,10 +153,8 @@ export function forgetPassword(param) {
   return async () => {
     try {
       const data = await requestService.get(API.forgotPassword, param)
-      if (data.code === ERR_OK) {
         message.success('send mail successful')
         goto('/password/succ')
-      }
     } catch (err) {
       message.error('send mail failed')
       console.error(err)
@@ -173,11 +171,7 @@ export function findPassword(params) {
   return setTimeout(async () => {
     try {
       const data = await requestService.post(API.findPassword, params)
-      if (data.code === ERR_OK) {
         message.success('Update password successful')
-      } else {
-        console.log(data)
-      }
       goto('/password/done')
     } catch (err) {
       console.error(err)
