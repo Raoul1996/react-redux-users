@@ -8,10 +8,9 @@ import {login} from '../../../actions'
 import {config} from './index.json'
 import {messageInfo} from '../../../config/message.json'
 import './index.less'
-import {goto, verify} from '../../../utils'
+import {verify} from '../../../utils'
 
 const FormItem = Form.Item
-const ButtonGroup = Button.Group
 
 const mapStateToProps = () => ({})
 

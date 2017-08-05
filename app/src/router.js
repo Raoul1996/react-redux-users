@@ -12,7 +12,7 @@ import EditUserInfo from './containers/editUserInfo.container'
 const RouterApp = () => (
   <Router history={hashHistory}>
     {/* because I only have the register component this moment, so I Redirect the root path to the register route */ }
-    <Redirect path="/" to="login"/>
+    {/*<Redirect path="/" to="login"/>*/}
     <Route path="/" component={AppComponent}>
       <Route path="register">
         <IndexRoute component={Register}/>
