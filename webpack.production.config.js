@@ -12,7 +12,7 @@ module.exports = {
     vendors: ['react', 'react-dom', 'react-router']  //第三方库和框架另外打包
   },
   output: {
-    path: path.join(__dirname, '/dist/build/'),
+    path: path.join(__dirname, '/dist/'),
     // publicPath: '', //有需要请自己配置，表示 index.html 中引入资源的前缀path
     filename: 'js/bundle.[chunkhash:8].js',
     chunkFilename: 'js/[name].[chunkhash:8].js'
