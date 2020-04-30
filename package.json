@@ -6,8 +6,10 @@
   "scripts": {
     "build": "webpack  --progress --config webpack.production.config.js",
     "start": "webpack-dev-server",
-    "commit":"git add . && git commit",
-    "pull": "git pull --rebase"
+    "commit": "git add . && git commit",
+    "pull": "git pull --rebase",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "antd": "^2.12.2",
@@ -21,7 +23,8 @@
     "redux-log": "^2.0.0",
     "redux-thunk": "^2.1.0",
     "store2": "^2.5.1",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.6",
@@ -76,5 +79,6 @@
       "standard-jsx"
     ]
   },
-  "author": "NEUQer/ouxu"
+  "author": "NEUQer/ouxu",
+  "snyk": true
 }
